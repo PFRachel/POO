@@ -1,16 +1,28 @@
-namespace trabajo;
+using System;
+using System.Threading.Tasks;
 
-static class Program
+class Program
 {
-    /// <summary>
-    ///  The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    static void Main()
+    static void Main(string[] args)
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        Application.Run(new Form1());
-    }    
+        Task.Run(() => {
+            Server server9000 = new Server(9000);
+            server9000.Start();
+        });
+
+        Task.Run(() => {
+            Server server8000 = new Server(8000);
+            server8000.Start();
+        });
+
+        Task.Delay(1000).Wait(); // Wait for the servers to start
+
+        Client client1 = new Client("127.0.0.1", 9000);
+        client1.SendMessage("Hello from Client 1");
+
+        Client client2 = new Client("127.0.0.1", 8000);
+        client2.SendMessage("Hello from Client 2");
+
+        Console.ReadLine(); // Keep the main thread alive
+    }
 }
