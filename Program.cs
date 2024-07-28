@@ -3,15 +3,15 @@ using System.Threading.Tasks;
 
 class Program
 {
-    static async Task Main(string[] args)
+    static void Main(string[] args)
     {
-        if (args.Length < 1)
+        if (args.Length < 2)
         {
-            Console.WriteLine("Uso: dotnet run <server|client> <puerto>");
+            Console.WriteLine("Usage: dotnet run <server|client> <port>");
             return;
         }
 
-        string mode = args[0];
+        string mode = args[0].ToLower();
         int port = int.Parse(args[1]);
 
         if (mode == "server")
@@ -21,12 +21,27 @@ class Program
         }
         else if (mode == "client")
         {
-            Client client = new Client("127.0.0.1", port);
-            await client.StartAsync();
+            string serverAddress = "127.0.0.1";
+            Client client = new Client(serverAddress, port);
+
+            Task.Run(() => client.ReceiveMessages());
+
+            while (true)
+            {
+                Console.Write("Enter target port and message (format: <port>:<message>): ");
+                string input = Console.ReadLine();
+                string[] parts = input.Split(':');
+                if (parts.Length < 2) continue;
+
+                int targetPort = int.Parse(parts[0]);
+                string message = parts[1];
+
+                client.SendMessage(message, targetPort);
+            }
         }
         else
         {
-            Console.WriteLine("Modo no válido. Usa 'server' o 'client'.");
+            Console.WriteLine("Invalid mode. Use 'server' or 'client'.");
         }
     }
 }

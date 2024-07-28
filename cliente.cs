@@ -14,28 +14,28 @@ public class Client
         this.port = port;
     }
 
-    public async Task StartAsync()
+    public void SendMessage(string message, int targetPort)
     {
-        TcpClient client = new TcpClient();
-        await client.ConnectAsync(server, port);
+        TcpClient client = new TcpClient(server, targetPort);
         NetworkStream stream = client.GetStream();
 
-        byte[] initialData = Encoding.ASCII.GetBytes(port.ToString());
-        await stream.WriteAsync(initialData, 0, initialData.Length);
+        string formattedMessage = $"{port}:{message}";
+        byte[] data = Encoding.ASCII.GetBytes(formattedMessage);
+        stream.Write(data, 0, data.Length);
+        Console.WriteLine($"Sent to {targetPort}: {message}");
 
-        _ = Task.Run(async () => await ReceiveMessages(stream));
+        byte[] buffer = new byte[1024];
+        int bytesRead = stream.Read(buffer, 0, buffer.Length);
+        string response = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+        Console.WriteLine($"Received: {response}");
 
-        while (true)
-        {
-            Console.Write("Enter target port and message (format: port:message): ");
-            string input = Console.ReadLine();
-            byte[] data = Encoding.ASCII.GetBytes(input);
-            await stream.WriteAsync(data, 0, data.Length);
-        }
+        client.Close();
     }
 
-    private async Task ReceiveMessages(NetworkStream stream)
+    public async Task ReceiveMessages()
     {
+        TcpClient client = new TcpClient(server, port);
+        NetworkStream stream = client.GetStream();
         byte[] buffer = new byte[1024];
 
         while (true)
@@ -46,5 +46,7 @@ public class Client
             string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
             Console.WriteLine($"Received: {message}");
         }
+
+        client.Close();
     }
 }
