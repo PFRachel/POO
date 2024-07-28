@@ -13,7 +13,6 @@ namespace Cliente
         private StreamWriter? streamw;
         private StreamReader? streamr;
         private TcpClient? client;
-        private string? nick;
 
         private delegate void DaddItem(string s);
 
@@ -43,11 +42,11 @@ namespace Cliente
             }
         }
 
-        private void Conectar()
+        private void Conectar(string targetPort)
         {
             try
             {
-                int port = int.Parse(txtPuerto.Text);
+                int port = int.Parse(targetPort);
                 client = new TcpClient("127.0.0.1", port);
                 if (client.Connected)
                 {
@@ -56,9 +55,6 @@ namespace Cliente
                     streamw = new StreamWriter(stream);
                     streamr = new StreamReader(stream);
 
-                    streamw.WriteLine(nick);
-                    streamw.Flush();
-
                     t.Start();
                 }
                 else
@@ -66,17 +62,11 @@ namespace Cliente
                     MessageBox.Show("Servidor no Disponible");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Servidor no Disponible");
                 Application.Exit();
             }
-        }
-
-        private void btnConectar_Click(object sender, EventArgs e)
-        {
-            nick = txtUsuario.Text;
-            Conectar();
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -84,16 +74,23 @@ namespace Cliente
             string targetPort = txtPuertoDestino.Text;
             string message = txtMensaje.Text;
 
-            streamw?.WriteLine($"{targetPort}:{message}");
+            if (client == null || !client.Connected)
+            {
+                Conectar(targetPort);
+            }
+
+            streamw?.WriteLine(message);
             streamw?.Flush();
             txtMensaje.Clear();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            btnEnviar.Location = new Point(277, 250);
-            txtMensaje.Location = new Point(25, 250);
-            listBox1.Location = new Point(25, 23);
+            btnEnviar.Location = new Point(360, 350);
+            txtMensaje.Location = new Point(25, 350);
+            listBox1.Location = new Point(25, 20);
+            txtPuertoDestino.Location = new Point(80, 310);
+            lbPuertoDestino.Location = new Point(25, 313);
         }
     }
 }
