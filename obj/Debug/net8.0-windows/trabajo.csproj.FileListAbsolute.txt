@@ -1,0 +1,14 @@
+C:\Users\R\Desktop\ProyectosC\trabajo\bin\Debug\net8.0-windows\trabajo.exe
+C:\Users\R\Desktop\ProyectosC\trabajo\bin\Debug\net8.0-windows\trabajo.deps.json
+C:\Users\R\Desktop\ProyectosC\trabajo\bin\Debug\net8.0-windows\trabajo.runtimeconfig.json
+C:\Users\R\Desktop\ProyectosC\trabajo\bin\Debug\net8.0-windows\trabajo.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\bin\Debug\net8.0-windows\trabajo.pdb
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.AssemblyInfoInputs.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.AssemblyInfo.cs
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.csproj.CoreCompileInputs.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\refint\trabajo.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.pdb
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\trabajo.genruntimeconfig.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\obj\Debug\net8.0-windows\ref\trabajo.dll
