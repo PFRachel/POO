@@ -1,30 +1,23 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using System.Threading;
-using System.Net.Sockets;
 using System.IO;
+using System.Net.Sockets;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Cliente
 {
     public partial class Form1 : Form
     {
-        private NetworkStream stream;
-        private StreamWriter streamw;
-        private StreamReader streamr;
-        private TcpClient client;
-        private string nick;
+        private NetworkStream? stream;
+        private StreamWriter? streamw;
+        private StreamReader? streamr;
+        private TcpClient? client;
+        private string? nick;
 
-        private delegate void DaddItem(String s);
+        private delegate void DaddItem(string s);
 
-        private void AddItem(String s)
+        private void AddItem(string s)
         {
             listBox1.Items.Add(s);
         }
@@ -36,11 +29,11 @@ namespace Cliente
 
         private void Listen()
         {
-            while (client.Connected)
+            while (client?.Connected == true)
             {
                 try
                 {
-                    this.Invoke(new DaddItem(AddItem), streamr.ReadLine());
+                    this.Invoke(new DaddItem(AddItem), streamr?.ReadLine() ?? string.Empty);
                 }
                 catch
                 {
@@ -54,7 +47,8 @@ namespace Cliente
         {
             try
             {
-                client = new TcpClient("127.0.0.1", 8000); // Cambia el puerto según sea necesario
+                int port = int.Parse(txtPuerto.Text);
+                client = new TcpClient("127.0.0.1", port);
                 if (client.Connected)
                 {
                     Thread t = new Thread(Listen);
@@ -87,11 +81,11 @@ namespace Cliente
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            string targetPort = txtPuerto.Text;
+            string targetPort = txtPuertoDestino.Text;
             string message = txtMensaje.Text;
 
-            streamw.WriteLine($"{targetPort}:{message}");
-            streamw.Flush();
+            streamw?.WriteLine($"{targetPort}:{message}");
+            streamw?.Flush();
             txtMensaje.Clear();
         }
 

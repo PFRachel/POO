@@ -23,6 +23,8 @@
             this.btnConectar = new System.Windows.Forms.Button();
             this.txtPuerto = new System.Windows.Forms.TextBox();
             this.lbPuerto = new System.Windows.Forms.Label();
+            this.txtPuertoDestino = new System.Windows.Forms.TextBox();
+            this.lbPuertoDestino = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEnviar
@@ -55,7 +57,7 @@
             // lbTitulo1
             // 
             this.lbTitulo1.AutoSize = true;
-            this.lbTitulo1.Location = new System.Drawing.Point(106, 77);
+            this.lbTitulo1.Location = new System.Drawing.Point(22, 280);
             this.lbTitulo1.Name = "lbTitulo1";
             this.lbTitulo1.Size = new System.Drawing.Size(43, 13);
             this.lbTitulo1.TabIndex = 3;
@@ -63,14 +65,14 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(109, 108);
+            this.txtUsuario.Location = new System.Drawing.Point(71, 277);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(140, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 4;
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(109, 135);
+            this.btnConectar.Location = new System.Drawing.Point(177, 275);
             this.btnConectar.Name = "btnConectar";
             this.btnConectar.Size = new System.Drawing.Size(75, 23);
             this.btnConectar.TabIndex = 5;
@@ -80,25 +82,41 @@
             // 
             // txtPuerto
             // 
-            this.txtPuerto.Location = new System.Drawing.Point(109, 164);
+            this.txtPuerto.Location = new System.Drawing.Point(71, 303);
             this.txtPuerto.Name = "txtPuerto";
-            this.txtPuerto.Size = new System.Drawing.Size(140, 20);
+            this.txtPuerto.Size = new System.Drawing.Size(100, 20);
             this.txtPuerto.TabIndex = 6;
             // 
             // lbPuerto
             // 
             this.lbPuerto.AutoSize = true;
-            this.lbPuerto.Location = new System.Drawing.Point(106, 148);
+            this.lbPuerto.Location = new System.Drawing.Point(22, 306);
             this.lbPuerto.Name = "lbPuerto";
             this.lbPuerto.Size = new System.Drawing.Size(38, 13);
             this.lbPuerto.TabIndex = 7;
             this.lbPuerto.Text = "Puerto";
             // 
+            // txtPuertoDestino
+            // 
+            this.txtPuertoDestino.Location = new System.Drawing.Point(71, 329);
+            this.txtPuertoDestino.Name = "txtPuertoDestino";
+            this.txtPuertoDestino.Size = new System.Drawing.Size(100, 20);
+            this.txtPuertoDestino.TabIndex = 8;
+            // 
+            // lbPuertoDestino
+            // 
+            this.lbPuertoDestino.AutoSize = true;
+            this.lbPuertoDestino.Location = new System.Drawing.Point(22, 332);
+            this.lbPuertoDestino.Name = "lbPuertoDestino";
+            this.lbPuertoDestino.Size = new System.Drawing.Size(38, 13);
+            this.lbPuertoDestino.TabIndex = 9;
+            this.lbPuertoDestino.Text = "Destino";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 284);
+            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.lbPuertoDestino);
+            this.Controls.Add(this.txtPuertoDestino);
             this.Controls.Add(this.lbPuerto);
             this.Controls.Add(this.txtPuerto);
             this.Controls.Add(this.btnConectar);
@@ -108,7 +126,7 @@
             this.Controls.Add(this.txtMensaje);
             this.Controls.Add(this.btnEnviar);
             this.Name = "Form1";
-            this.Text = "Chat Comunitario";
+            this.Text = "Chat Cliente";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,5 +140,7 @@
         private System.Windows.Forms.Button btnConectar;
         private System.Windows.Forms.TextBox txtPuerto;
         private System.Windows.Forms.Label lbPuerto;
+        private System.Windows.Forms.TextBox txtPuertoDestino;
+        private System.Windows.Forms.Label lbPuertoDestino;
     }
 }

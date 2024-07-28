@@ -2,87 +2,83 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
+using System.IO;
 using System.Threading;
 
-public class Server
+namespace Servidor
 {
-    private int port;
-    private TcpListener listener;
-    private Dictionary<int, TcpClient> clients = new Dictionary<int, TcpClient>();
-
-    public Server(int port)
+    class Server
     {
-        this.port = port;
-    }
+        static List<StreamWriter> clients = new List<StreamWriter>();
+        static TcpListener? listener = null;
 
-    public void Start()
-    {
-        listener = new TcpListener(IPAddress.Any, port);
-        listener.Start();
-        Console.WriteLine($"Server started on port {port}");
-
-        while (true)
+        static void Main(string[] args)
         {
-            TcpClient client = listener.AcceptTcpClient();
-            Thread clientThread = new Thread(() => HandleClient(client));
-            clientThread.Start();
-        }
-    }
+            Console.WriteLine("Ingrese el puerto para el servidor:");
+            int port = int.Parse(Console.ReadLine());
 
-    private void HandleClient(TcpClient client)
-    {
-        NetworkStream stream = client.GetStream();
-        StreamReader reader = new StreamReader(stream);
-        StreamWriter writer = new StreamWriter(stream);
-
-        int clientPort = int.Parse(reader.ReadLine());
-        lock (clients)
-        {
-            clients[clientPort] = client;
-        }
-
-        while (true)
-        {
             try
             {
-                string message = reader.ReadLine();
-                string[] parts = message.Split(':');
-                int targetPort = int.Parse(parts[0]);
-                string text = parts[1];
+                listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
+                listener.Start();
+                Console.WriteLine($"Servidor iniciado en el puerto {port}...");
 
-                lock (clients)
+                while (true)
                 {
-                    if (clients.ContainsKey(targetPort))
+                    TcpClient client = listener.AcceptTcpClient();
+                    StreamWriter writer = new StreamWriter(client.GetStream());
+                    StreamReader reader = new StreamReader(client.GetStream());
+
+                    clients.Add(writer);
+
+                    Thread thread = new Thread(() => HandleClient(client, reader, writer));
+                    thread.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                listener?.Stop();
+            }
+        }
+
+        static void HandleClient(TcpClient client, StreamReader reader, StreamWriter writer)
+        {
+            string? nick = reader.ReadLine();
+            Console.WriteLine($"{nick} se ha unido");
+
+            try
+            {
+                while (client.Connected)
+                {
+                    string? msg = reader.ReadLine();
+                    if (msg != null)
                     {
-                        StreamWriter targetWriter = new StreamWriter(clients[targetPort].GetStream());
-                        targetWriter.WriteLine($"{clientPort}: {text}");
-                        targetWriter.Flush();
+                        BroadcastMessage($"{nick}: {msg}");
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                lock (clients)
-                {
-                    clients.Remove(clientPort);
-                }
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                clients.Remove(writer);
                 client.Close();
-                break;
             }
         }
-    }
 
-    public static void Main(string[] args)
-    {
-        if (args.Length != 1)
+        static void BroadcastMessage(string msg)
         {
-            Console.WriteLine("Usage: dotnet run <port>");
-            return;
+            foreach (StreamWriter writer in clients)
+            {
+                writer.WriteLine(msg);
+                writer.Flush();
+            }
         }
-
-        int port = int.Parse(args[0]);
-        Server server = new Server(port);
-        server.Start();
     }
 }
