@@ -5,12 +5,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Task.Run(() => {
+        Task.Run(() =>
+        {
             Server server9000 = new Server(9000);
             server9000.Start();
         });
 
-        Task.Run(() => {
+        Task.Run(() =>
+        {
             Server server8000 = new Server(8000);
             server8000.Start();
         });

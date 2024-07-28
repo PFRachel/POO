@@ -1,5 +1,17 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+
 public class Server
 {
+    private int port;
+
+    public Server(int port)
+    {
+        this.port = port;
+    }
+
     public void Start()
     {
         TcpListener listener = new TcpListener(IPAddress.Any, port);
@@ -8,21 +20,20 @@ public class Server
 
         while (true)
         {
-            // Obtenemos nuestro cliente
             TcpClient client = listener.AcceptTcpClient();
+            if (client == null)
+                continue;
 
-            // Obtenemos todo lo necesario para codificar el mensaje entrante
             NetworkStream stream = client.GetStream();
+            if (stream == null)
+                continue;
+
             byte[] buffer = new byte[1024];
             int bytesRead = stream.Read(buffer, 0, buffer.Length);
             string message = Encoding.ASCII.GetString(buffer, 0, bytesRead);
-
-            // Imprimimos el mensaje
             Console.WriteLine($"Received: {message}");
 
-            // Echo the message back to the client
             stream.Write(buffer, 0, bytesRead);
-
             client.Close();
         }
     }
