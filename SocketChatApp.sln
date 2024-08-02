@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketChatApp", "SocketChatApp\SocketChatApp.csproj", "{8C826D85-C401-4805-9D76-0903EA6FE362}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C826D85-C401-4805-9D76-0903EA6FE362}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C826D85-C401-4805-9D76-0903EA6FE362}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C826D85-C401-4805-9D76-0903EA6FE362}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C826D85-C401-4805-9D76-0903EA6FE362}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E1DE2EE-5A70-418E-9197-AC8E9548E508}
+	EndGlobalSection
+EndGlobal
