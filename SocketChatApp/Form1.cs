@@ -105,6 +105,56 @@ namespace SocketChatApp
                 textBoxReceived.AppendText(mensaje + Environment.NewLine);
             }
         }
+
+        //Funcion asociada al bot�n de enviar
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //Convierte el texto del cuadro de texto de puerto en un n�mero entero.
+                if (int.TryParse(textBoxPort.Text, out int remotePort))
+                {
+                    // Obtiene el mensaje del cuadro de texto
+                    string message = textBoxMessage.Text;
+                    // Convierte el mensaje en una serie de bytes UTF-8
+                    byte[] data = Encoding.UTF8.GetBytes(message);
+                    // Define el punto de extremo remoto utilizando el puerto elegido
+                    EndPoint remoteEP = new IPEndPoint(IPAddress.Loopback, remotePort);
+                    //Envia el mensaje por el socket
+                    socket?.SendTo(data, remoteEP);
+                    MostrarMensajes($"De {puertolocal}: {message}");
+                    // Limpia el cuadro de texto de mensaje
+                    textBoxMessage.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Puerto inv�lido");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                // Muestra un mensaje de error si hay un problema al inicializar el socket.
+                MessageBox.Show($"Error enviando el mensaje: {ex.Message}");
+            }
+        }
+
+
+
+        private void StopListening()
+        {
+            try
+            {
+                cancellationTokenSource?.Cancel();
+                socket?.Shutdown(SocketShutdown.Both);
+                socket?.Close();
+                socket = null; // Set the socket to null to avoid reuse
+            }
+            catch (Exception ex)
+            {
+                // Muestra un mensaje de error si hay un problema al inicializar el socket.
+                MostrarMensajes($"Error deteniendo la escucha: {ex.Message}");
+            }
         }
         //Detiene la escucha cuando se cierra el programa
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
