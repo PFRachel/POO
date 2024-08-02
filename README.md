@@ -8,9 +8,11 @@ Recomendaciones de como se ejecuta y se usa la aplicaión.
 
 2-Ejecute un CMD o terminal de su preferencia en la barra de busqueda.
 
-3-Ubiquese en el archivo llamandolo de esta forma ( cd trabajo )
+3-Ubiquese en el archivo llamandolo de esta forma ( cd POO-main ).
 
-4-Luego vas a ejecutar el comando dotnet run --project SocketChatApp -port 7080(puedes elegir el puerto que desee preferiblemente que sea mayor de 6000)
+// puedes realizarlo desde visual studio code en su terminal y nada mas pones el comando que esta en el punto 4.
+
+4-Luego vas a ejecutar el comando dotnet run --project SocketChatApp -port 7080(puedes elegir el puerto que desee preferiblemente que sea mayor de 6000).
 
 5- Ejecutar en una segunda terminal exactamente lo mismo que se realizo  en los pasos posteriores.
 
