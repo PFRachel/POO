@@ -1,4 +1,4 @@
-﻿namespace SocketChatApp
+﻿namespace SocketChatApp  // Programa para la interfaz
 {
     partial class Form1
     {

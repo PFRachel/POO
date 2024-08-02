@@ -1,0 +1,17 @@
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\bin\Debug\net8.0-windows\SocketChatApp.exe
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\bin\Debug\net8.0-windows\SocketChatApp.deps.json
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\bin\Debug\net8.0-windows\SocketChatApp.runtimeconfig.json
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\bin\Debug\net8.0-windows\SocketChatApp.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\bin\Debug\net8.0-windows\SocketChatApp.pdb
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.Form1.resources
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.csproj.GenerateResource.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.AssemblyInfoInputs.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.AssemblyInfo.cs
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.csproj.CoreCompileInputs.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.sourcelink.json
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\refint\SocketChatApp.dll
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.pdb
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\SocketChatApp.genruntimeconfig.cache
+C:\Users\R\Desktop\ProyectosC\trabajo\SocketChatApp\obj\Debug\net8.0-windows\ref\SocketChatApp.dll
