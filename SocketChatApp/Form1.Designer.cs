@@ -17,19 +17,7 @@
             base.Dispose(disposing);
         }
 
-        private void InitializeComponent()
-        {
-            textBoxMessage = new TextBox();
-            textBoxPort = new TextBox();
-            buttonSend = new Button();
-            textBoxReceived = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            SuspendLayout();
-            // 
-            // textBoxMessage
+       
             // 
             textBoxMessage.Location = new Point(24, 225);
             textBoxMessage.Multiline = true;
